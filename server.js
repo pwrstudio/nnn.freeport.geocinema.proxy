@@ -13,12 +13,11 @@ app.use(cors())
 const router = express.Router()
 
 router.get('/', (req, res) => {
-  console.log('⇨ Request received')
   console.time('run')
 
   const remoteAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress
 
-  console.log(remoteAddress)
+  console.log('⇨ Request received from:', remoteAddress)
 
   axios.get('http://3.208.0.37:8888/geo_fortune', {
     headers: {
@@ -27,7 +26,6 @@ router.get('/', (req, res) => {
   })
     .then(response => {
       console.log('🛰️', ' Received data')
-      console.log(response.data)
       res.send(response.data).end()
       console.timeEnd('run')
     })
@@ -37,4 +35,4 @@ router.get('/', (req, res) => {
 
 app.use('/', router)
 app.listen(PORT)
-console.log('NNN.FREEPORT.BRIDGE started... port:', String(PORT))
+console.log('NNN.FREEPORT.GEOCINEMA.PROXY started... port:', String(PORT))
