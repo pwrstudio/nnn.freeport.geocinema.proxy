@@ -1,6 +1,6 @@
 const PORT = process.env.PORT || 80
 const express = require('express')
-var cors = require('cors')
+const cors = require('cors')
 const bodyParser = require('body-parser')
 const axios = require('axios')
 
@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 
   console.log('⇨ Request received from:', remoteAddress)
 
-  axios.get('http://3.208.0.37:8888/geo_fortune', {
+  axios.get('http://3.208.229.80:8888/geo_fortune', {
     headers: {
       'x-forwarded-for': remoteAddress
     }
